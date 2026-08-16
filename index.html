@@ -3,170 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forrest County Sheriff's Office</title>
+    <title>FCSO - Open Positions</title>
     <style>
         :root {
-            --forrest-green: #114b21; /* Rich dark green */
-            --nav-green: #0d3818;
-            --gold-accent: #cf9f4d; /* Tan/Gold from the screenshot */
-            --text-light: #ffffff;
-            --bg-light: #f4f6f8;
+            --dark-forrest-green: #0a2e14; /* Darker green as requested */
+            --gold-accent: #cf9f4d;
+            --text-dark: #333333;
+            --bg-light: #ffffff;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--forrest-green);
-            color: var(--text-light);
-        }
-
-        /* Top Header Area */
-        .top-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 40px;
-            background-color: var(--forrest-green);
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-area h1 {
-            margin: 0;
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            font-size: 1.2rem;
-        }
-
-        /* Navigation Bar */
-        nav {
-            background-color: var(--forrest-green);
-            padding: 15px 0;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        nav a:hover {
-            color: var(--gold-accent);
-        }
-
-        .nav-arrow {
-            font-size: 0.7rem;
-        }
-
-        /* Hero Carousel Section */
-        .hero {
-            height: 400px;
-            background-color: #555;
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1541888062837-775b83870b22?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 20px;
-        }
-
-        .carousel-controls {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 8px 15px;
-            border-radius: 20px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            color: #000;
-            font-weight: bold;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border: 2px solid #000;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        .dot.active { background-color: #000; }
-
-        /* Join Our Team Section */
-        .join-team {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .join-team h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-        }
-
-        .icon-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .icon-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 140px;
-            text-decoration: none;
-            color: white;
-        }
-
-        .icon-box {
-            background-color: var(--gold-accent);
-            width: 100px;
-            height: 100px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 3rem;
-            color: white;
-            transition: transform 0.2s;
-        }
-
-        .icon-item:hover .icon-box {
-            transform: scale(1.05);
-            background-color: #dfb260;
-        }
-
-        .icon-item span {
-            font-weight: 600;
-            font-size: 0.9rem;
-            line-height: 1.3;
-        }
-
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        header { background-color: var(--dark-forrest-green); color: white; }
+        .top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-area h1 { margin: 0; font-size: 1.4rem; font-weight: 700; }
+        nav { padding: 15px 0; display: flex; justify-content: center; gap: 25px; border-top: 1px solid rgba(255,255,255,0.1); background-color: var(--dark-forrest-green); }
+        nav a { color: white; text-decoration: none; font-size: 0.95rem; font-weight: 600; }
+        nav a:hover { color: var(--gold-accent); }
+        
+        .content-container { max-width: 800px; margin: 50px auto; padding: 0 20px; }
+        h1.page-title { font-size: 2.5rem; border-bottom: 4px solid var(--text-dark); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+        
+        .career-link-box { margin: 20px 0 30px 0; font-size: 1.2rem; font-weight: bold; font-style: italic; }
+        .career-link-box a { color: #1a0dab; text-decoration: underline; }
+        
+        p { margin-bottom: 20px; font-size: 1.05rem; }
     </style>
 </head>
 <body>
@@ -174,66 +34,32 @@
     <header>
         <div class="top-header">
             <div class="logo-area">
-                <!-- Mock Star Badge -->
                 <div style="width:30px; height:30px; background:var(--gold-accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></div>
                 <h1>Forrest County<br>Sheriff's Office</h1>
             </div>
-            <div class="social-icons">
-                🔍 🍎 G ⓕ 𝕏 📷
-            </div>
         </div>
         <nav>
-            <a href="index.html">Contact Us</a>
-            <a href="services.html">Public Safety Division <span class="nav-arrow">▼</span></a>
-            <a href="services.html">Jail Operations <span class="nav-arrow">▼</span></a>
-            <a href="services.html">Visitor Information <span class="nav-arrow">▼</span></a>
-            <a href="services.html">Civil Process <span class="nav-arrow">▼</span></a>
-            <a href="database.html" style="color: var(--gold-accent);">LEO Database <span class="nav-arrow">🔒</span></a>
+            <a href="index.html">Open Positions</a>
+            <a href="public-safety.html">Public Safety Division</a>
+            <a href="jail-operations.html">Jail Operations</a>
+            <a href="visitor-info.html">Visitor Information</a>
+            <a href="civil-process.html">Civil Process</a>
+            <a href="database.html" style="color: var(--gold-accent);">LEO Database 🔒</a>
         </nav>
     </header>
 
-    <div class="hero">
-        <div class="carousel-controls">
-            <span>⏸</span>
-            <span class="dot"></span>
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+    <div class="content-container">
+        <h1 class="page-title">Open Positions</h1>
+        
+        <div class="career-link-box">
+            The most up-to-date list of open positions with the Forrest County Sheriff's Office can be found at our career page link here:<br>
+            <a href="https://form.typeform.com/to/MAmBNtyp" target="_blank">Forrest County Sheriff's Office - Career Page</a>
         </div>
-    </div>
 
-    <section class="join-team">
-        <h2>Join Our Team</h2>
-        <div class="icon-grid">
-            <a href="#" class="icon-item">
-                <div class="icon-box">👥</div>
-                <span>Open Positions</span>
-            </a>
-            <a href="#" class="icon-item">
-                <div class="icon-box">📝</div>
-                <span>Application</span>
-            </a>
-            <a href="#" class="icon-item">
-                <div class="icon-box">💲</div>
-                <span>Benefits</span>
-            </a>
-            <a href="#" class="icon-item">
-                <div class="icon-box">👤</div>
-                <span>Internships</span>
-            </a>
-            <a href="#" class="icon-item">
-                <div class="icon-box">⭐</div>
-                <span>Employment:<br>Corrections</span>
-            </a>
-        </div>
-        <div class="icon-grid" style="margin-top: 40px;">
-            <a href="#" class="icon-item">
-                <div class="icon-box">📋</div>
-                <span>Employment:<br>Non-Uniform</span>
-            </a>
-        </div>
-    </section>
+        <p>We seek to employ talented individuals committed to joining a professional organization dedicated to public safety in Forrest County. In support of the Sheriff's mission to serve the citizens of Forrest County by enhancing public safety, employees are tasked with operating a safe, secure, and humane correctional facility through direct supervision. To accomplish this goal, new employees become part of a highly trained, dedicated, professional, compassionate, and diverse workforce.</p>
+
+        <p>The level of responsibility of our employees requires that we take great care in recruiting the best candidates we can find. The Forrest Sheriff's Office is committed to identifying hard-working and dedicated individuals pursuing careers in public safety/law enforcement. Our organization seeks individuals committed to the values of honor, integrity, and selfless service.</p>
+    </div>
 
 </body>
 </html>
