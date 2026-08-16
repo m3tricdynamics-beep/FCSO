@@ -3,30 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FCSO - Open Positions</title>
+    <title>Forrest County Sheriff's Office - Home</title>
     <style>
         :root {
-            --dark-forrest-green: #0a2e14; /* Darker green as requested */
+            --dark-forrest-green: #0a2e14;
             --gold-accent: #cf9f4d;
-            --text-dark: #333333;
-            --bg-light: #ffffff;
+            --text-light: #ffffff;
         }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
-        header { background-color: var(--dark-forrest-green); color: white; }
-        .top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; }
-        .logo-area { display: flex; align-items: center; gap: 15px; }
-        .logo-area h1 { margin: 0; font-size: 1.4rem; font-weight: 700; }
-        nav { padding: 15px 0; display: flex; justify-content: center; gap: 25px; border-top: 1px solid rgba(255,255,255,0.1); background-color: var(--dark-forrest-green); }
-        nav a { color: white; text-decoration: none; font-size: 0.95rem; font-weight: 600; }
-        nav a:hover { color: var(--gold-accent); }
-        
-        .content-container { max-width: 800px; margin: 50px auto; padding: 0 20px; }
-        h1.page-title { font-size: 2.5rem; border-bottom: 4px solid var(--text-dark); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
-        
-        .career-link-box { margin: 20px 0 30px 0; font-size: 1.2rem; font-weight: bold; font-style: italic; }
-        .career-link-box a { color: #1a0dab; text-decoration: underline; }
-        
-        p { margin-bottom: 20px; font-size: 1.05rem; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-forrest-green);
+            color: var(--text-light);
+        }
+
+        /* Top Header Area */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: var(--dark-forrest-green);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .logo-area h1 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--dark-forrest-green);
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: var(--gold-accent);
+        }
+
+        /* Hero Photo Background Section */
+        .hero {
+            height: 450px;
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gold-accent);
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+        }
     </style>
 </head>
 <body>
@@ -34,12 +104,13 @@
     <header>
         <div class="top-header">
             <div class="logo-area">
-                <div style="width:30px; height:30px; background:var(--gold-accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></div>
+                <img src="logo.png" alt="FCSO Logo" class="logo-img" onerror="this.style.display='none'">
                 <h1>Forrest County<br>Sheriff's Office</h1>
             </div>
         </div>
         <nav>
-            <a href="index.html">Open Positions</a>
+            <a href="index.html">Home</a>
+            <a href="open-positions.html">Open Positions</a>
             <a href="public-safety.html">Public Safety Division</a>
             <a href="jail-operations.html">Jail Operations</a>
             <a href="visitor-info.html">Visitor Information</a>
@@ -48,17 +119,9 @@
         </nav>
     </header>
 
-    <div class="content-container">
-        <h1 class="page-title">Open Positions</h1>
-        
-        <div class="career-link-box">
-            The most up-to-date list of open positions with the Forrest County Sheriff's Office can be found at our career page link here:<br>
-            <a href="https://form.typeform.com/to/MAmBNtyp" target="_blank">Forrest County Sheriff's Office - Career Page</a>
-        </div>
-
-        <p>We seek to employ talented individuals committed to joining a professional organization dedicated to public safety in Forrest County. In support of the Sheriff's mission to serve the citizens of Forrest County by enhancing public safety, employees are tasked with operating a safe, secure, and humane correctional facility through direct supervision. To accomplish this goal, new employees become part of a highly trained, dedicated, professional, compassionate, and diverse workforce.</p>
-
-        <p>The level of responsibility of our employees requires that we take great care in recruiting the best candidates we can find. The Forrest Sheriff's Office is committed to identifying hard-working and dedicated individuals pursuing careers in public safety/law enforcement. Our organization seeks individuals committed to the values of honor, integrity, and selfless service.</p>
+    <div class="hero">
+        <h2>To Protect and Serve</h2>
+        <p>Official Portal of the Forrest County Sheriff's Office</p>
     </div>
 
 </body>
