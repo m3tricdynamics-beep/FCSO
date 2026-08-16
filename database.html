@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCSO - Internal MDT Database</title>
+    <style>
+        :root {
+            --forrest-green: #114b21;
+            --gold-accent: #cf9f4d;
+            --text-light: #ffffff;
+            --bg-light: #e9ecef;
+            --text-dark: #333;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: var(--bg-light); color: var(--text-dark); }
+        
+        header { background-color: var(--forrest-green); color: var(--text-light); border-bottom: 4px solid var(--gold-accent);}
+        .top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-area h1 { margin: 0; font-size: 1.4rem; font-weight: 700; }
+        nav { padding: 15px 0; display: flex; justify-content: center; gap: 25px; border-top: 1px solid rgba(255,255,255,0.1); }
+        nav a { color: var(--text-light); text-decoration: none; font-size: 0.95rem; font-weight: 600; }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        
+        /* Login Screen */
+        #login-view { background: white; max-width: 400px; margin: 80px auto; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; border-top: 6px solid var(--forrest-green); }
+        #login-view input { width: 100%; padding: 12px; margin: 20px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn { background-color: var(--forrest-green); color: white; border: none; padding: 12px 20px; width: 100%; border-radius: 4px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .btn:hover { background-color: #0d3818; }
+
+        /* Dashboard Screen */
+        #dashboard-view { display: none; }
+        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);}
+        .grid { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; }
+        
+        .card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .card h3 { margin-top: 0; color: var(--forrest-green); border-bottom: 2px solid var(--gold-accent); padding-bottom: 10px;}
+        
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9rem;}
+        input[type="text"], select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background-color: var(--forrest-green); color: white; }
+        tr:hover { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="top-header">
+            <div class="logo-area">
+                <div style="width:30px; height:30px; background:var(--gold-accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></div>
+                <h1>FCSO Secure Portal</h1>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">← Return to Public Website</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <!-- LOGIN VIEW -->
+        <div id="login-view">
+            <h2 style="color: var(--forrest-green); margin-top: 0;">Restricted Access</h2>
+            <p style="color: #666; font-size: 0.9rem;">Law Enforcement Personnel Only</p>
+            <input type="text" id="officer-callsign" placeholder="Enter Callsign / Badge #">
+            <button class="btn" onclick="login()">Authenticate</button>
+        </div>
+
+        <!-- DASHBOARD VIEW -->
+        <div id="dashboard-view">
+            <div class="dash-header">
+                <h2 style="margin: 0; color: var(--forrest-green);">Mobile Data Terminal (MDT)</h2>
+                <div>
+                    <span id="logged-in-user" style="font-weight: bold; margin-right: 15px;"></span>
+                    <button class="btn" style="width: auto; padding: 8px 15px; background: var(--gold-accent);" onclick="logout()">Log Out</button>
+                </div>
+            </div>
+
+            <div class="grid">
+                <!-- Data Entry Form -->
+                <div class="card">
+                    <h3>Submit Incident Report</h3>
+                    <div class="form-group">
+                        <label>Suspect / Involved Person</label>
+                        <input type="text" id="suspect-name" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Incident Type</label>
+                        <select id="incident-type">
+                            <option>Traffic Stop</option>
+                            <option>Arrest Warrant</option>
+                            <option>Disturbance</option>
+                            <option>Property Crime</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Narrative</label>
+                        <textarea id="narrative" rows="5" placeholder="Provide incident details..."></textarea>
+                    </div>
+                    <button class="btn" onclick="submitRecord()">File Record</button>
+                </div>
+
+                <!-- Database View -->
+                <div class="card">
+                    <h3>Active Records Database</h3>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Case ID</th>
+                                    <th>Officer</th>
+                                    <th>Subject</th>
+                                    <th>Type</th>
+                                    <th>Narrative</th>
+                                </tr>
+                            </thead>
+                            <tbody id="records-table">
+                                <!-- JavaScript populates records here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = "";
+
+        // Mock Login
+        function login() {
+            const callsign = document.getElementById('officer-callsign').value.trim();
+            if(!callsign) {
+                alert("Please enter a valid callsign.");
+                return;
+            }
+            currentUser = callsign;
+            document.getElementById('login-view').style.display = 'none';
+            document.getElementById('dashboard-view').style.display = 'block';
+            document.getElementById('logged-in-user').innerText = "Officer: " + currentUser;
+            loadRecords();
+        }
+
+        // Logout
+        function logout() {
+            currentUser = "";
+            document.getElementById('officer-callsign').value = "";
+            document.getElementById('dashboard-view').style.display = 'none';
+            document.getElementById('login-view').style.display = 'block';
+        }
+
+        // Submit to LocalStorage DB
+        function submitRecord() {
+            const suspect = document.getElementById('suspect-name').value;
+            const type = document.getElementById('incident-type').value;
+            const narrative = document.getElementById('narrative').value;
+
+            if(!suspect || !narrative) {
+                alert("Please fill out the suspect name and narrative.");
+                return;
+            }
+
+            const newRecord = {
+                id: "FC-" + Math.floor(100000 + Math.random() * 900000),
+                officer: currentUser,
+                suspect: suspect,
+                type: type,
+                narrative: narrative
+            };
+
+            let records = JSON.parse(localStorage.getItem('fcso_rp_database')) || [];
+            records.unshift(newRecord); // Add to top of array
+            localStorage.setItem('fcso_rp_database', JSON.stringify(records));
+
+            // Clear form
+            document.getElementById('suspect-name').value = "";
+            document.getElementById('narrative').value = "";
+            
+            loadRecords(); // Refresh table
+        }
+
+        // Load from LocalStorage DB
+        function loadRecords() {
+            const records = JSON.parse(localStorage.getItem('fcso_rp_database')) || [];
+            const tbody = document.getElementById('records-table');
+            tbody.innerHTML = "";
+
+            records.forEach(rec => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${rec.id}</strong></td>
+                    <td>${rec.officer}</td>
+                    <td>${rec.suspect}</td>
+                    <td>${rec.type}</td>
+                    <td style="max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${rec.narrative}">${rec.narrative}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+    </script>
+</body>
+</html>
