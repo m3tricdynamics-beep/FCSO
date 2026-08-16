@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCSO - Public Services</title>
+    <style>
+        :root {
+            --forrest-green: #114b21;
+            --gold-accent: #cf9f4d;
+            --text-light: #ffffff;
+            --bg-light: #f4f6f8;
+            --text-dark: #333333;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: var(--bg-light); color: var(--text-dark); }
+        
+        header { background-color: var(--forrest-green); color: var(--text-light); }
+        .top-header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-area h1 { margin: 0; font-size: 1.4rem; font-weight: 700; }
+        nav { padding: 15px 0; display: flex; justify-content: center; gap: 25px; border-top: 1px solid rgba(255,255,255,0.1); }
+        nav a { color: var(--text-light); text-decoration: none; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+        nav a:hover { color: var(--gold-accent); }
+        
+        .page-header { background-color: var(--forrest-green); padding: 40px 20px; text-align: center; color: white; border-top: 4px solid var(--gold-accent); }
+        .page-header h2 { margin: 0; font-size: 2.5rem; }
+
+        .content-container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .info-card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; border-left: 5px solid var(--gold-accent); }
+        .info-card h3 { color: var(--forrest-green); margin-top: 0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="top-header">
+            <div class="logo-area">
+                <div style="width:30px; height:30px; background:var(--gold-accent); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></div>
+                <h1>Forrest County<br>Sheriff's Office</h1>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Contact Us</a>
+            <a href="services.html">Public Safety Division ▼</a>
+            <a href="services.html">Jail Operations ▼</a>
+            <a href="services.html">Visitor Information ▼</a>
+            <a href="services.html">Civil Process ▼</a>
+            <a href="database.html" style="color: var(--gold-accent);">LEO Database 🔒</a>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h2>Public Safety & Operations</h2>
+    </div>
+
+    <div class="content-container">
+        <div class="info-card">
+            <h3>Jail Visitation Hours</h3>
+            <p>On-site video visitation is available Tuesday through Sunday from 8:00 AM to 9:00 PM. Visitors must register online at least 24 hours prior to their intended visit.</p>
+        </div>
+        <div class="info-card">
+            <h3>Civil Process Services</h3>
+            <p>The Civil Division is responsible for the service of court documents including summonses, complaints, subpoenas, and writs of execution. Fees apply for service.</p>
+        </div>
+    </div>
+
+</body>
+</html>
